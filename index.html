@@ -34,9 +34,10 @@
                 $('#textDiv').html('You failed! Would you like to continue?');
                 $('#Start').html('<sp>Continue!</sp>');
             }
-            if(counter == Memory.length)
+            if(counter == Memory.length){
                 $('#textDiv').html('You passed!');
                 $('#Start').html('<sp>Start new test!</sp>');
+            }
         }
     }); 
     function button(){
