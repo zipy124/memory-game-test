@@ -26,12 +26,15 @@
         else{
             if(keyEvent.key == "Shift" || keyEvent.key == "Alt"){}//ignore shift, otherwise capitals print with shift infront!
             else if(keyEvent.key == Memory[counter]){
-                counter = counter + 1;
+                if(counter <(Memory.length))
+                    counter = counter + 1;
                 $("<sp>"+keyEvent.key+"</sp>").appendTo('#textDiv');
             }
             else{
                 $('#textDiv').html('You failed!');
             }
+            if(counter == Memory.length)
+                $('#textDiv').html('You passed!');
         }
     }); 
     function memorize(){
