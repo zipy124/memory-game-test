@@ -3,7 +3,7 @@
 <title>Memory App</title>
 <link href="style.css" rel="stylesheet" type="text/css">
 
-<div id="textDiv"></div>
+<div id="textDiv" onclick="show();"></div>
 <div id="Start" onclick="button();"><sp>Memorize!</sp></div>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
 <script type="text/javascript">
@@ -31,7 +31,7 @@
                 $("<sp>"+keyEvent.key+"</sp>").appendTo('#textDiv');
             }
             else{
-                $('#textDiv').html('You failed! Would you like to continue?');
+                $('#textDiv').html('You failed! Click to show answer.');
                 $('#Start').html('<sp>Continue!</sp>');
             }
             if(counter == Memory.length){
@@ -56,6 +56,12 @@
             Memory = '';
             $('#textDiv').html('');
             $('#Start').html('<sp>Memorize!</sp>');
+        }
+    }
+    function show(){
+        if($('#textDiv').html() == 'You failed! Click to show answer.'){
+            $('#textDiv').html(Memory);
+            $('#Start').html("<sp>Start new test!</sp>")
         }
     }
 
