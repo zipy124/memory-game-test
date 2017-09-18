@@ -60,7 +60,10 @@
     }
     function show(){
         if($('#textDiv').html() == 'You failed! Click to show answer.'){
-            $('#textDiv').html(Memory);
+            $('#textDiv').html('');
+            $("<sp>"+Memory.slice(0,counter-Memory.length)+"</sp>").appendTo('#textDiv');
+            $("<sp id ='error'>"+Memory.slice(counter,counter+1)+"</sp>").appendTo('#textDiv');
+            $("<sp>"+Memory.slice(counter+1,Memory.length)+"</sp>").appendTo('#textDiv');
             $('#Start').html("<sp>Start new test!</sp>")
         }
     }
