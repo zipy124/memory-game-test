@@ -4,7 +4,7 @@
 <link href="style.css" rel="stylesheet" type="text/css">
 
 <div id="textDiv"></div>
-<div id="Start" onclick="memorize();"><sp>Memorize!</sp></div>
+<div id="Start" onclick="button();"><sp>Memorize!</sp></div>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
 <script type="text/javascript">
     var MyDiv = document.getElementById("textDiv");
@@ -25,22 +25,37 @@
         }
         else{
             if(keyEvent.key == "Shift" || keyEvent.key == "Alt"){}//ignore shift, otherwise capitals print with shift infront!
-            else if(keyEvent.key == Memory[counter]){
+            else if(keyEvent.key == Memory[counter] && $('#Start').html() == '<sp>Good luck!</sp>'){
                 if(counter <(Memory.length))
                     counter = counter + 1;
                 $("<sp>"+keyEvent.key+"</sp>").appendTo('#textDiv');
             }
             else{
-                $('#textDiv').html('You failed!');
+                $('#textDiv').html('You failed! Would you like to continue?');
+                $('#Start').html('<sp>Continue!</sp>');
             }
             if(counter == Memory.length)
                 $('#textDiv').html('You passed!');
+                $('#Start').html('<sp>Start new test!</sp>');
         }
     }); 
-    function memorize(){
-        started = true;
-        $('#textDiv').html('');
-        counter = 0;
+    function button(){
+        if($('#Start').html() == "<sp>Memorize!</sp>"){
+            started = true;
+            $('#textDiv').html('');
+            counter = 0;
+            $('#Start').html('<sp>Good luck!</sp>');
+        }
+        else if ($('#Start').html() == "<sp>Continue!</sp>"){
+            $('#Start').html('<sp>Good luck!</sp>');
+            $('#textDiv').html(Memory.slice(0,counter-Memory.length));
+        }
+        else if ($('#Start').html() == "<sp>Start new test!</sp>"){
+            started = false;
+            Memory = '';
+            $('#textDiv').html('');
+            $('#Start').html('<sp>Memorize!</sp>');
+        }
     }
 
 </script>
