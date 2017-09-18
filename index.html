@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+<title>Memory App</title>
+<link href="style.css" rel="stylesheet" type="text/css">
+
+<div id="textDiv">
+
+<script type="text/javascript">
+    var obj = document.getElementById("textDiv");
+    window.addEventListener("keydown",function(keyEvent){
+        if(keyEvent.key == "Backspace") //delete text
+            obj.lastChild.remove();
+        else if(keyEvent.key == "Enter"){ //new line
+            var br = document.createElement("br");
+            obj.appendChild(br);           
+        }
+        else{
+            var sp = document.createElement("span");
+            sp.innerText = keyEvent.key;
+            obj.appendChild(sp);
+        }
+    }); 
+</script>
