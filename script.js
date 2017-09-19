@@ -56,12 +56,19 @@ function button(){
         $('#Start').html('<sp>Memorize!</sp>');
     }
 }
+function retry(){
+    $('#Start').html('<sp>Good luck!</sp>');
+    $('#textDiv').html('');
+    started = true;
+    counter = 0
+}
 function show(){
     if($('#textDiv').html() == 'You failed! Click to show answer.'){
         $('#textDiv').html('');
         $("<sp>"+Memory.slice(0,counter-Memory.length)+"</sp>").appendTo('#textDiv');
         $("<sp id ='error'>"+Memory.slice(counter,counter+1)+"</sp>").appendTo('#textDiv');
         $("<sp>"+Memory.slice(counter+1,Memory.length)+"</sp>").appendTo('#textDiv');
+        $("<sp id ='retry' onclick='retry()'>"+"    :Click to retry test!"+"</sp>").appendTo('#textDiv');
         $('#Start').html("<sp>Start new test!</sp>")
     }
 }
