@@ -13,14 +13,14 @@ window.addEventListener("keydown",function(keyEvent){
             MyDiv.lastChild.remove();
             Memory = Memory.slice(0, -1);
         }
-        else if(keyEvent.key == "Shift" || keyEvent.key == "Alt" || keyEvent.key == "Control"){}//ignore shift, otherwise capitals print with shift infront!
+        else if(keyEvent.key == "Shift" || keyEvent.key == "Alt" || keyEvent.key == "Control" || keyEvent.key == "Tab" || keyEvent.key == "CapsLock" || keyEvent.key == "Enter"){}//ignore shift, otherwise capitals print with shift infront!
         else if(!keyEvent.ctrlKey && !keyEvent.metaKey && !keyEvent.altKey){
             Memory = Memory + keyEvent.key;
             $("<sp>"+keyEvent.key+"</sp>").appendTo('#textDiv');
         }
     }
     else{
-        if(keyEvent.key == "Shift" || keyEvent.key == "Alt" || keyEvent.key == "Control"){}//ignore shift, otherwise capitals print with shift infront!
+        if(keyEvent.key == "Shift" || keyEvent.key == "Alt" || keyEvent.key == "Control" || keyEvent.key == "Tab" || keyEvent.key == "CapsLock" || keyEvent.key == "Enter"){}//ignore shift, otherwise capitals print with shift infront!
         else if(keyEvent.ctrlKey || keyEvent.metaKey || keyEvent.altKey){}
 
         else if(keyEvent.key == Memory[counter] && $('#Start').html() == '<sp>Good luck!</sp>'){
